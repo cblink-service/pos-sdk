@@ -1,0 +1,34 @@
+{
+    "name": "cblink-service/pos-sdk",
+    "description": "integration pos api sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jinjun",
+            "email": "757258777@qq.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "guzzlehttp/guzzle": "^6.2",
+        "php": ">=7.2",
+        "symfony/cache": "^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "0.9.*|^8.5",
+        "mockery/mockery": "~7.0|^1.3",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "ramsey/uuid": "^4"
+    },
+    "autoload": {
+        "psr-4": {
+            "CblinkService\\PosSdk\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cblink\\DispatchSdk\\Tests\\": "tests"
+        }
+    }
+}
