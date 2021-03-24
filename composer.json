@@ -12,7 +12,7 @@
         "ext-json": "*",
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^6.2",
-        "php": ">=7.2",
+        "php": ">=7.1",
         "symfony/cache": "^5.1|^4.3"
     },
     "require-dev": {
