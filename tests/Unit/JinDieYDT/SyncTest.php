@@ -30,6 +30,9 @@ class SyncTest extends \PHPUnit\Framework\TestCase
         ];
 
         $this->appTest = (new PosApi($config))->gateway('JinDieSS');
+        $redisAdapter = new FilesystemAdapter();
+
+        $this->appTest->setCache($redisAdapter);
     }
 
     public function testQueryShop()

@@ -98,7 +98,7 @@ class JinDieSS implements GatewayInterface
      */
     public function pushOrder(array $data)
     {
-        return $this->sendRequest('v1.eatsun', $data);
+        return ;
     }
 
     /**
@@ -108,6 +108,7 @@ class JinDieSS implements GatewayInterface
      */
     public function pushPoint(array $data)
     {
+        return ;
     }
 
     /**
@@ -117,6 +118,7 @@ class JinDieSS implements GatewayInterface
      */
     public function queryOrder(array $data)
     {
+        return ;
     }
 
     /**
@@ -238,20 +240,7 @@ class JinDieSS implements GatewayInterface
     {
         $response = $this->requestApi($uri, $data, $method);
 
-        print_r($response);
-        exit;
-
         $result = json_decode($response, true);
-
-        // 返回 token 失效就再次重新获取 token 发送
-        if (false == $result['Result'] && array_key_exists('ErrorCode', $result['ReturnValue']) && 101 == $result['ReturnValue']['ErrorCode']) {
-            // 删除缓存
-            $this->getCache()->delete($this->getCacheKey());
-
-            $response = $this->requestApi($uri, $data, $method);
-
-            $result = json_decode($response, true);
-        }
 
         return $result;
     }
