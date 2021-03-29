@@ -35,6 +35,9 @@ class SyncTest extends \PHPUnit\Framework\TestCase
         $this->appTest->setCache($redisAdapter);
     }
 
+    /**
+     * 获取门店.
+     */
     public function testQueryShop()
     {
         $data['data'] = [
@@ -53,7 +56,7 @@ class SyncTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * 会员卡类型.
+     * 查询门店商品
      */
     public function testQueryFood()
     {
@@ -62,7 +65,7 @@ class SyncTest extends \PHPUnit\Framework\TestCase
             'TopRowCount' => 0,
             'Limit' => 0,
             'StartRow' => 0,
-            'FilterString' => "FUseOrgId.FNUMBER='1006'",
+            'FilterString' => "FUseOrgId='1'",
             'OrderString' => '',
             'FieldKeys' => 'FNUMBER,FNAME,FPrice,FUseOrgId,FUseOrgId.FNUMBER',
         ]];

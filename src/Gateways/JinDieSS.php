@@ -10,7 +10,6 @@
 
 namespace CblinkService\PosSdk\Gateways;
 
-use CblinkService\PosSdk\Contracts\GatewayInterface;
 use CblinkService\PosSdk\Traits\HasHttpRequest;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
@@ -18,7 +17,7 @@ use Symfony\Component\Cache\CacheItem;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
-class JinDieSS implements GatewayInterface
+class JinDieSS
 {
     use HasHttpRequest;
 
@@ -45,18 +44,6 @@ class JinDieSS implements GatewayInterface
     public function __construct($config)
     {
         $this->config = $config;
-    }
-
-    /**
-     * @return Client
-     */
-    protected function getHttpClient(array $options = [])
-    {
-        if (!$this->client) {
-            $this->client = new Client($options);
-        }
-
-        return $this->client;
     }
 
     protected function getCookies()
@@ -89,36 +76,6 @@ class JinDieSS implements GatewayInterface
         ];
 
         return $options;
-    }
-
-    /**
-     * 推送订单.
-     *
-     * @return array|mixed
-     */
-    public function pushOrder(array $data)
-    {
-        return ;
-    }
-
-    /**
-     * 推送积分.
-     *
-     * @return array|mixed
-     */
-    public function pushPoint(array $data)
-    {
-        return ;
-    }
-
-    /**
-     * 获取订单.
-     *
-     * @return array|mixed
-     */
-    public function queryOrder(array $data)
-    {
-        return ;
     }
 
     /**
@@ -176,55 +133,12 @@ class JinDieSS implements GatewayInterface
 
             $cookieArr = $this->cookieJar->toArray();
 
-            $cookies = [];
             foreach ($cookieArr as $cookieItem) {
                 $cookies[$cookieItem['Name']] = $cookieItem['Value'];
             }
 
             return json_encode($cookies);
         });
-    }
-
-    /**
-     * 获取会员卡
-     *
-     * @return array
-     */
-    public function queryMember(array $params)
-    {
-        $data['ActionName'] = 'Membership/get';
-
-        $data['PostData'] = $params;
-
-        return $this->sendRequest('v1.eatsun', $data);
-    }
-
-    /**
-     * 修改客户信息.
-     *
-     * @return array|mixed
-     */
-    public function saveMember(array $params)
-    {
-        $data['ActionName'] = 'Guest/update';
-
-        $data['PostData'] = $params;
-
-        return $this->sendRequest('v1.eatsun', $data);
-    }
-
-    /**
-     * 调整卡金额积分.
-     */
-    public function changeBalance(array $params)
-    {
-    }
-
-    /**
-     * 添加会员及会员卡
-     */
-    public function createMember(array $params)
-    {
     }
 
     /**
@@ -316,28 +230,11 @@ class JinDieSS implements GatewayInterface
      */
     public function getAccountIdServer()
     {
-        $response = json_decode($this->queryEatsun(), true);
-
-        $data = [];
-
-        foreach ($response['ReturnValue'] as $value) {
-            if ('V76B' == $value['Name']) {
-                $data['product'] = [
-                    'acctID' => $value['Id'],
-                    'username' => $this->config['username'],
-                    'password' => $this->config['password'],
-                    'lcid' => $this->config['lcid'],
-                ];
-            } else {
-                $data['dev'] = [
-                    'acctID' => $value['Id'],
-                    'username' => $this->config['username'],
-                    'password' => $this->config['password'],
-                    'lcid' => $this->config['lcid'],
-                ];
-            }
-        }
-
-        return $this->config['debug'] ? $data['dev'] : $data['product'];
+        return [
+            'acctID' => $this->config['acct_id'],
+            'username' => $this->config['username'],
+            'password' => $this->config['password'],
+            'lcid' => $this->config['lcid'],
+        ];
     }
 }

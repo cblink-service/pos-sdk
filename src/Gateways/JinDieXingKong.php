@@ -10,12 +10,11 @@
 
 namespace CblinkService\PosSdk\Gateways;
 
-use CblinkService\PosSdk\Contracts\GatewayInterface;
 use CblinkService\PosSdk\Traits\HasHttpRequest;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
-class JinDieXingKong implements GatewayInterface
+class JinDieXingKong
 {
     use HasHttpRequest;
 
@@ -33,52 +32,6 @@ class JinDieXingKong implements GatewayInterface
     public function __construct($config)
     {
         $this->config = $config;
-    }
-
-    /**
-     * 推送订单.
-     *
-     * @return array|mixed
-     */
-    public function pushOrder(array $data)
-    {
-        return $this->sendRequest('v1.eatsun', $data);
-    }
-
-    /**
-     * 推送积分.
-     *
-     * @return array|mixed
-     */
-    public function pushPoint(array $data)
-    {
-    }
-
-    /**
-     * 获取订单.
-     *
-     * @return array|mixed
-     */
-    public function queryOrder(array $data)
-    {
-    }
-
-    /**
-     * 获取门店.
-     *
-     * @return array|mixed
-     */
-    public function queryShop(array $data)
-    {
-    }
-
-    /**
-     * 同步门店.
-     *
-     * @return array|mixed
-     */
-    public function queryProduct(array $data)
-    {
     }
 
     /**
@@ -322,25 +275,10 @@ class JinDieXingKong implements GatewayInterface
      */
     public function getAccountIdServer()
     {
-        $response = json_decode($this->queryEatsun(), true);
-
-        $data = [];
-        foreach ($response['ReturnValue'] as $value) {
-            if ('V76B' == $value['Name']) {
-                $data['product'] = [
-                    'AccountID' => $value['Id'],
-                    'UserName' => $this->config['user_name'],
-                    'Password' => $this->config['password'],
-                ];
-            } else {
-                $data['dev'] = [
-                    'AccountID' => $value['Id'],
-                    'UserName' => $this->config['user_name'],
-                    'Password' => $this->config['password'],
-                ];
-            }
-        }
-
-        return $this->config['debug'] ? $data['dev'] : $data['product'];
+        return [
+            'AccountID' => $this->config['acct_id'],
+            'UserName' => $this->config['user_name'],
+            'Password' => $this->config['password'],
+        ];
     }
 }
