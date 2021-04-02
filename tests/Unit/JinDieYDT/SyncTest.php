@@ -65,11 +65,12 @@ class SyncTest extends \PHPUnit\Framework\TestCase
             'TopRowCount' => 0,
             'Limit' => 0,
             'StartRow' => 0,
-            'FilterString' => "FUseOrgId='1'",
+            'FilterString' => "FUseOrgId='120512'",
             'OrderString' => '',
             'FieldKeys' => 'FNUMBER,FNAME,FPrice,FUseOrgId,FUseOrgId.FNUMBER',
         ]];
         $res = $this->appTest->queryProduct($data);
+
         $this->assertSame(json_decode($res, true)['Result'], true);
     }
 }

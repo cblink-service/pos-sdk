@@ -40,7 +40,7 @@ class MemberTest extends \PHPUnit\Framework\TestCase
     {
         $data = [
             [
-                'FMobile' => '13944702711',
+                'FMobile' => '13106061246',
                 'FOrgId' => 1,
             ],
         ];
@@ -102,11 +102,11 @@ class MemberTest extends \PHPUnit\Framework\TestCase
         $data = [
             [
                 'FOrgId' => '1',
-                'FGuestCardNo' => 'BM0011',
-                'FPOSFlowId' => '20211027008',
-                'FModuPricipalAmt' => 200,
-                'FModuPresentAmt' => 10,
-                'FModuScore' => 20,
+                'FGuestCardNo' => 'BM0012',
+                'FPOSFlowId' => '20211027009',
+                'FModuPricipalAmt' => 2000,
+                'FModuPresentAmt' => 1000,
+                'FModuScore' => 2000,
                 'FModuUnInvoicedAmount' => 20,
                 'FNote' => 'test002',
             ],

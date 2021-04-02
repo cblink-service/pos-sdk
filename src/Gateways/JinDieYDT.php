@@ -76,7 +76,7 @@ class JinDieYDT
     {
         // 处理签名
         $data['timestamp'] = time() * 1000;
-        $data['ticket'] = Uuid::uuid4()->getHex()->toString();
+        $data['ticket'] = Uuid::uuid4()->toString();
         $data['accessKey'] = $this->config['accessKey'];
         $data['sign'] = $this->setSign($data);
 
