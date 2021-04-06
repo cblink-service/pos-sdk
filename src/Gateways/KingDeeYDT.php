@@ -13,7 +13,7 @@ namespace CblinkService\PosSdk\Gateways;
 use CblinkService\PosSdk\Traits\HasHttpRequest;
 use Ramsey\Uuid\Uuid;
 
-class JinDieYDT
+class KingDeeYDT
 {
     use HasHttpRequest;
 

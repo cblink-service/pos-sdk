@@ -24,13 +24,13 @@ class PushOrderTest extends \PHPUnit\Framework\TestCase
         $testCofnig = require 'testConfig.php';
 
         $config = [
-            'driver' => 'JinDieYDT',
+            'driver' => 'KingDeeYDT',
             'channels' => [
-                'JinDieYDT' => $testCofnig['JinDieYDT'],
+                'KingDeeYDT' => $testCofnig['KingDeeYDT'],
             ],
         ];
 
-        $this->appTest = (new PosApi($config))->gateway('JinDieYDT');
+        $this->appTest = (new PosApi($config))->gateway('KingDeeYDT');
     }
 
     /**
@@ -124,7 +124,7 @@ class PushOrderTest extends \PHPUnit\Framework\TestCase
             ]];
 
         $res = $this->appTest->pushOrder($data);
-
+var_dump($res);exit;
         $this->assertSame($res['status'], 1);
     }
 

@@ -14,7 +14,7 @@ use CblinkService\PosSdk\Traits\HasHttpRequest;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
-class JinDieXingKong
+class KingDeeXK
 {
     use HasHttpRequest;
 

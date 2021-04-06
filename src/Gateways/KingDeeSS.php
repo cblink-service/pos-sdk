@@ -17,7 +17,7 @@ use Symfony\Component\Cache\CacheItem;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
-class JinDieSS
+class KingDeeSS
 {
     use HasHttpRequest;
 

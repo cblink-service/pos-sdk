@@ -23,13 +23,13 @@ class MemberTest extends \PHPUnit\Framework\TestCase
 
         $testConfig = require 'testConfig.php';
         $config = [
-            'driver' => 'JinDieXingKong',
+            'driver' => 'KingDeeXK',
             'channels' => [
-                'JinDieXingKong' => $testConfig['JinDieXingKong'],
+                'KingDeeXK' => $testConfig['KingDeeXK'],
             ],
         ];
 
-        $this->appTest = (new PosApi($config))->gateway('JinDieXingKong');
+        $this->appTest = (new PosApi($config))->gateway('KingDeeXK');
 
         $redisAdapter = new FilesystemAdapter();
 

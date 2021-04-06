@@ -23,13 +23,13 @@ class SyncTest extends \PHPUnit\Framework\TestCase
         $testCofnig = require 'testConfig.php';
 
         $config = [
-            'driver' => 'JinDieSS',
+            'driver' => 'KingDeeSS',
             'channels' => [
-                'JinDieSS' => $testCofnig['JinDieSS'],
+                'KingDeeSS' => $testCofnig['KingDeeSS'],
             ],
         ];
 
-        $this->appTest = (new PosApi($config))->gateway('JinDieSS');
+        $this->appTest = (new PosApi($config))->gateway('KingDeeSS');
         $redisAdapter = new FilesystemAdapter();
 
         $this->appTest->setCache($redisAdapter);
