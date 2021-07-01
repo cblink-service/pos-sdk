@@ -121,10 +121,11 @@ class PushOrderTest extends \PHPUnit\Framework\TestCase
 
                 ],
                  "driverStatus" => 0 // 配送状态
-            ]];
+            ]
+        ];
 
         $res = $this->appTest->pushOrder($data);
-var_dump($res);exit;
+
         $this->assertSame($res['status'], 1);
     }
 

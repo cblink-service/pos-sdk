@@ -30,7 +30,7 @@ class KingDeeSS
 
     protected $expireSecond = 7000;
 
-    protected $baseUri = 'http://kdcy2.kingdee.com/';
+    protected $baseUri;
 
     /**
      * @var Client
@@ -43,6 +43,7 @@ class KingDeeSS
 
     public function __construct($config)
     {
+        $this->baseUri = $config['debug'] ? 'http://kdcy2.kingdee.com/k3cloud/' : $config['xk_base_uri'];
         $this->config = $config;
     }
 
@@ -85,7 +86,7 @@ class KingDeeSS
      */
     public function queryShop(array $data)
     {
-        $url = 'K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc';
+        $url = 'Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc';
 
         return $this->sendRequest($url, $data);
     }
@@ -97,7 +98,7 @@ class KingDeeSS
      */
     public function queryProduct(array $data)
     {
-        $url = 'K3Cloud/Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc';
+        $url = 'Kingdee.BOS.WebApi.ServicesStub.DynamicFormService.ExecuteBillQuery.common.kdsvc';
 
         return $this->sendRequest($url, $data);
     }
@@ -109,7 +110,7 @@ class KingDeeSS
      */
     public function queryEatsun()
     {
-        return $this->get('K3Cloud/getalldatacenters.eatsun');
+        return $this->get('getalldatacenters.eatsun');
     }
 
     /**
@@ -123,7 +124,7 @@ class KingDeeSS
     {
         return $this->getCache()->get($this->getCacheKey(), function (ItemInterface $item) use ($account) {
             // 请求 账套
-            $this->request('post', sprintf('%s/%s', $this->getBaseUri(), 'K3Cloud/Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUser.common.kdsvc'),
+            $this->request('post', sprintf('%s/%s', $this->getBaseUri(), 'Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUser.common.kdsvc'),
                 [
                     'json' => $account,
                 ]

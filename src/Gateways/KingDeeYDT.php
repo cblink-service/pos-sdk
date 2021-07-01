@@ -19,11 +19,14 @@ class KingDeeYDT
 
     protected $config;
 
-    protected $baseUri = 'http://vip100.kingdee.com/CY-PosOnlineOpenApi/canDaoTakeoutApi/operate.action';
+    protected $baseUri;
 
     public function __construct($config)
     {
         $this->config = $config;
+        $this->baseUri = $config['debug'] ?
+            'http://vip100.kingdee.com/CY-PosOnlineOpenApi/canDaoTakeoutApi/operate.action':
+            'https://shishen.kingdee.com/CY- PosOnlineOpenApi/thirdPosBillApi/operate.action';
     }
 
     /**

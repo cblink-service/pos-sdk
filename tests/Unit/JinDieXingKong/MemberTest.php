@@ -79,13 +79,13 @@ class MemberTest extends \PHPUnit\Framework\TestCase
         $data = [
             [
                 'FCreateOrgId' => 1,    // 创建组织 id
-                'FGuestName' => '测试2021', // 姓名
-                'FMobile' => '13944702711', // 手机号
-                'FGuestLevel' => 'aa5c8bc7-7e68-4dff-8296-1b3fe569c1fe',    // 等级 id
+                'FGuestName' => 'kingTest', // 姓名
+                'FMobile' => '12312312312', // 手机号
+                'FGuestLevel' => '123',    // 等级 id
                 'FCertNo' => '19900909',    // 身份正好 可选
                 'FBusnissStaffId' => 16394, // 业务员 可选
                 'FPassword' => '123456',    // 卡密码  可选
-                'FCardTypeId' => '577e7f58-0c9e-41ae-a3af-1849abd92be6',    // 卡类型 id
+                'FCardTypeId' => '123',    // 卡类型 id
                 'FGenderId' => 0,   // 性别 0 男 1 女
                 'FBirthday' => '1990-09-09',    // 生日 可选
                 'FEndTime' => '2100-10-10',  // 会员卡有效期 可选
@@ -102,8 +102,8 @@ class MemberTest extends \PHPUnit\Framework\TestCase
         $data = [
             [
                 'FOrgId' => '1',
-                'FGuestCardNo' => 'BM0012',
-                'FPOSFlowId' => '20211027009',
+                'FGuestCardNo' => '1',
+                'FPOSFlowId' => '202110270010',
                 'FModuPricipalAmt' => 2000,
                 'FModuPresentAmt' => 1000,
                 'FModuScore' => 2000,
@@ -125,22 +125,22 @@ class MemberTest extends \PHPUnit\Framework\TestCase
         $data = [
             [
                 'FOrgId' => '1',
-                'FDate' => '2021-03-15 22:49:25',
-                'FGuestCardNo' => 'BM0011',
+                'FDate' => '2021-03-18 22:49:25',
+                'FGuestCardNo' => '1',
                 'FOpSourceType' => '9',
                 'FReceiptItems' => [
                     [
                         'FPayType' => 49,
                         'FReceiptID' => 149874,
-                        'FAmt' => 5,
+                        'FAmt' => 1,
                     ],
                 ],
-                'FDirectionId' => 1,
-                'FPOSFlowId' => '20211027011',
+                'FDirectionId' => 2,
+                'FPOSFlowId' => '20211027018',
                 'FPOSBillId' => time(),
                 'FPOSBillNo' => time(),
-                'FPOSBillAmt' => 5,
-                'FShopDay' => '2021-02-22 00:00:00',
+                'FPOSBillAmt' => 1,
+                'FShopDay' => '2021-03-18 00:00:00',
             ],
         ];
         $res = $this->appTest->memberBalanceConsume($data);

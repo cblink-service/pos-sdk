@@ -27,10 +27,12 @@ class KingDeeXK
 
     protected $expireSecond = 7000;
 
-    protected $baseUri = 'http://kdcy2.kingdee.com/k3cloud/';
+    protected $baseUri;
 
     public function __construct($config)
     {
+        $this->baseUri = $config['debug'] ? 'http://kdcy2.kingdee.com/k3cloud/' : $config['xk_base_uri'];
+
         $this->config = $config;
     }
 
@@ -53,7 +55,7 @@ class KingDeeXK
      */
     public function login($account)
     {
-        $response = $this->postJson(sprintf('%s/%s', $this->getBaseUri(), 'K3Cloud/login.eatsun'), [
+        $response = $this->postJson(sprintf('%s/%s', $this->getBaseUri(), 'login.eatsun'), [
             'UserToken' => '',
             'ActionName' => 'Login',
             'PostData' => [$account],
