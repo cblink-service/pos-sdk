@@ -72,7 +72,7 @@ class KingDeeSS
     {
         $options = [
             'base_uri' => method_exists($this, 'getBaseUri') ? $this->getBaseUri() : '',
-            'timeout' => method_exists($this, 'getTimeout') ? $this->getTimeout() : 5.0,
+            'timeout' => method_exists($this, 'getTimeout') ? $this->getTimeout() : 10.0,
             'cookies' => $this->getCookies(),
         ];
 
