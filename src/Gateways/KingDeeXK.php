@@ -55,7 +55,7 @@ class KingDeeXK
      */
     public function login($account)
     {
-        $response = $this->postJson(sprintf('%s/%s', $this->getBaseUri(), 'login.eatsun'), [
+        $response = $this->postJson(sprintf('%s%s', $this->getBaseUri(), 'login.eatsun'), [
             'UserToken' => '',
             'ActionName' => 'Login',
             'PostData' => [$account],

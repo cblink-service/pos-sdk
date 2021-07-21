@@ -55,7 +55,7 @@ class KingDeeSS
         // 缓存是否存在
         if ($cacheCookie->get()) {
             $cookieArray = json_decode($cacheCookie->get(), true);
-            $this->cookieJar = CookieJar::fromArray($cookieArray, '.kingdee.com');
+            $this->cookieJar = CookieJar::fromArray($cookieArray, parse_url($this->baseUri)['host']);
         }
 
         if (!$this->cookieJar) {
@@ -124,7 +124,7 @@ class KingDeeSS
     {
         return $this->getCache()->get($this->getCacheKey(), function (ItemInterface $item) use ($account) {
             // 请求 账套
-            $this->request('post', sprintf('%s/%s', $this->getBaseUri(), 'Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUser.common.kdsvc'),
+            $this->request('post', sprintf('%s%s', $this->getBaseUri(), 'Kingdee.BOS.WebApi.ServicesStub.AuthService.ValidateUser.common.kdsvc'),
                 [
                     'json' => $account,
                 ]
