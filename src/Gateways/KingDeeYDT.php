@@ -36,7 +36,7 @@ class KingDeeYDT
      */
     public function pushOrder(array $data)
     {
-        $data['actionName'] = 'candao.order.addOrder';
+        $data['actionName'] = $this->config['debug'] ? 'candao.order.addOrder' : 'addOrder';
 
         return $this->sendRequest($data);
     }
@@ -48,7 +48,7 @@ class KingDeeYDT
      */
     public function saveOrderStatus(array $data)
     {
-        $data['actionName'] = 'candao.order.updateOrderStatus';
+        $data['actionName'] =  $this->config['debug'] ? 'candao.order.updateOrderStatus' : 'updateOrderStatus';
 
         return $this->sendRequest($data);
     }
@@ -62,7 +62,7 @@ class KingDeeYDT
      */
     public function updateRefundStatus($data)
     {
-        $data['actionName'] = 'candao.order.updateRefundStatus';
+        $data['actionName'] = $this->config['debug'] ? 'candao.order.updateRefundStatus' : 'updateRefundStatus';
 
         return $this->sendRequest($data);
     }
