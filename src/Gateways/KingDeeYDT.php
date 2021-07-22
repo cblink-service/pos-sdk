@@ -26,7 +26,7 @@ class KingDeeYDT
         $this->config = $config;
         $this->baseUri = $config['debug'] ?
             'http://vip100.kingdee.com/CY-PosOnlineOpenApi/canDaoTakeoutApi/operate.action':
-            'https://shishen.kingdee.com/CY- PosOnlineOpenApi/thirdPosBillApi/operate.action';
+            'https://shishen.kingdee.com/CY-PosOnlineOpenApi/thirdPosBillApi/operate.action';
     }
 
     /**
