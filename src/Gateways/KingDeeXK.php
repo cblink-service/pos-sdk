@@ -176,6 +176,65 @@ class KingDeeXK
     }
 
     /**
+     * 会员优惠券列表
+     *
+     * @param array $params
+     * @return array
+     */
+    public function memberCoupons(array $params)
+    {
+        $data['ActionName'] = 'coupon/getguestcoupon';
+
+        $data['PostData'] = $params;
+
+        return $this->sendRequest('v1.eatsun', $data);
+    }
+
+    /**
+     *  获取优惠券列表
+     *
+     * @param array $params
+     * @return array
+     */
+    public function queryCoupons(array $params)
+    {
+        $data['ActionName'] = 'coupon/getcreaterule';
+
+        $data['PostData'] = $params;
+
+        return $this->sendRequest('v1.eatsun', $data);
+    }
+
+    /**
+     * 发送优惠券
+     *
+     * @param array $params
+     * @return array
+     */
+    public function sendCoupon(array $params)
+    {
+        $data['ActionName'] = 'coupon/create';
+
+        $data['PostData'] = $params;
+
+        return $this->sendRequest('v1.eatsun', $data);
+    }
+
+    /**
+     * 核销优惠券
+     * @param array $params
+     * @return array
+     */
+    public function consume(array $params)
+    {
+        $data['ActionName'] = 'coupon/use';
+
+        $data['PostData'] = $params;
+
+        return $this->sendRequest('v1.eatsun', $data);
+    }
+
+    /**
      * 发送请求
      *
      * @param $uri

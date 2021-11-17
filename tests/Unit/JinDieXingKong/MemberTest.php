@@ -40,7 +40,7 @@ class MemberTest extends \PHPUnit\Framework\TestCase
     {
         $data = [
             [
-                'FMobile' => '13106061246',
+                'FMobile' => '13944702732',
                 'FOrgId' => 1,
             ],
         ];
@@ -78,10 +78,10 @@ class MemberTest extends \PHPUnit\Framework\TestCase
     {
         $data = [
             [
-                'FCreateOrgId' => 1,    // 创建组织 id
-                'FGuestName' => 'kingTest', // 姓名
-                'FMobile' => '12312312312', // 手机号
-                'FGuestLevel' => '123',    // 等级 id
+                'FCreateOrgId' => 1006,    // 创建组织 id
+                'FGuestName' => 'kingTestA', // 姓名
+                'FMobile' => '18814452218', // 手机号
+                'FGuestLevel' => 'aa5c8bc7-7e68-4dff-8296-1b3fe569c1fe',    // 等级 id
                 'FCertNo' => '19900909',    // 身份正好 可选
                 'FBusnissStaffId' => 16394, // 业务员 可选
                 'FPassword' => '123456',    // 卡密码  可选
@@ -183,6 +183,80 @@ class MemberTest extends \PHPUnit\Framework\TestCase
         ];
 
         $res = $this->appTest->queryMemberCardRecord($data);
+
+        $this->assertSame($res['Result'], true);
+    }
+
+    /**
+     *
+     */
+    public function testQueryMemberCoupon()
+    {
+        $data = [
+            [
+                'FGuestId' => '138096',
+                'FIsUsed' => '0',
+                'FIsOutdated' => '0',
+                //'FRuleIds' => '0',
+            ],
+        ];
+
+        $res = $this->appTest->memberCoupons($data);
+
+        $this->assertSame($res['Result'], true);
+    }
+
+    /**
+     *
+     */
+    public function testQueryCoupon()
+    {
+        $data = [
+            [
+                'FCouponMedium' => '2',
+                'FCouponType' => '4',
+                'FCouponKind' => '1',
+                'OnlyInDate' => '1',
+                // 'FName' =>'仅限于券包'
+            ],
+        ];
+//        $data = [
+//            "FId" => 100092,    // 券规则ID
+//            "FGuestId"=> 138096 //
+//        ];
+
+        $res = $this->appTest->queryCoupons($data);
+
+        $this->assertSame($res['Result'], true);
+    }
+
+    public function testSendCoupon()
+    {
+        $data = [
+            [
+                'FGuestId' => '138096',
+                'FBatchRuleId' => '100095'
+            ],
+        ];
+
+        $res = $this->appTest->sendCoupon($data);
+
+        var_dump($res);exit;
+    }
+
+    public function testConsume()
+    {
+        $data = [
+            [
+                'FOrgId' => '1',
+                'FCouponNo' => '000020588088377',
+                'FPosFlowId' => time(),
+                'FOpState' => '1',
+                // 'FCouponUseChannel' => '',
+            ],
+        ];
+
+        $res = $this->appTest->consume($data);
 
         $this->assertSame($res['Result'], true);
     }
